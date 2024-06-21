@@ -1,0 +1,22 @@
+Selection Sort
+1. Select Minimum and swap
+2.carry on the same process 
+
+ex:
+13 46 24 9
+9 46 24 13
+9 13 24 46
+
+6 element will take at max 5 iterations
+
+pseudocoe
+for loop for i=0 to i=n-2
+    for j=i to j=n-1
+	keep min=0 ( position) 
+	then update min based on comparison : 
+	arr[j]<arr[min]
+
+	Swap algorithm using temp 
+
+Time complexity
+n + n-1 + n-2 .... 2= n^2 +n = n^2

@@ -1,0 +1,7 @@
+time complexity
+The time complexity of a code can be explained as the number of times a statement is executed.
+Normally, a computer can only process around 10^8 operations in a second, so determining whether or not our code can be executed within 1-2 seconds is crucial.
+
+Generally, when applying one loop for N times, we term the time complexity O(N).
+On applying a loop within a loop, both for N times, the time complexity is O(N^2).
+But remember, when dealing with large data sets of order 10^5, one cannot just simply execute an approach with O(N^2). Thus, improvisations are made to reduce it to O(N) or O(N*logN).

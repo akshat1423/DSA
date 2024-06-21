@@ -1,0 +1,28 @@
+Insertion sort
+takes an element and places in the correct order :
+
+14 9 15 12  6 8 13
+
+Algo working:
+(14) 9 15 12 6 8 13 ..ok
+(14 9) 15 12 6 8 13 .. is 9 at correct position?
+(9 14 15) 12 6 8 13 .. ? is 15 at correct?
+(9 14  15 12) 6 8 13 /..? no .. everything right shifts  ( based on comparison swap)
+---- ( 9 12 14 15 ) 6 8 13 after 2 comparison swaps right shifts
+
+and so on
+pseudocode
+i = 0 to i = n-1 
+while( j>0) ( you cant compared 1st element with anything else ) 
+    a[j-1]> a[j]:
+    swap a[j] and a[j-1]
+
+#IMPORTANT
+--- you can try of thinking if you will get error or not 
+for example if i took j=0 then a[j-1] == a[-1] which will give runtime error
+
+Time complexity
+0+1+2+...n ( based on number of swaps mostly( can see if you apply on 5 4 3 2 1 )) = 0(n^2)
+
+Worst , avg = n^2
+best = o (n) # no swaps happen ( without any change in code )

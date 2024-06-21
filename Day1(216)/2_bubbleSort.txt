@@ -1,0 +1,37 @@
+Bubble Sort 
+Pushes the maximum to last using adjacent swapping 
+13 46 24 52 20 9 
+1. check 13 46 sorted
+2. check 46 24 , swap , 24 46 
+....
+after 1st iteration of swaping 
+13 24  46 20 9 | 52 
+We can see the max is at the last ( IMPORTANT)
+....
+after 2nd iteration 
+13 24 20 9 | 46 52
+.....
+13 20 9 | 24 46 52
+... 
+13 9 | 20 24 46 52 
+...
+| 9 13 20 24 46 52
+
+# accessing index which does not exist runtime error 
+
+Pseudo code 
+so basically 0 to n-1 ... 0 to n-2...and 0...1
+i=n-1 to i= 1 ;
+ j=0 and j<=i-1(this is because last element cant be compared):
+a[j]>a[j+1]:
+then swap(using temp)
+
+time complexity
+n + n-1 ...+2 = n^2
+
+IMP , Interview special 
+worst , avg = n^2
+selection sort best worst avg = n^2
+best here : o(n) if optimisation done ( swap=0)
+
+

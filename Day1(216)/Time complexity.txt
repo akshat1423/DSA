@@ -1,0 +1,158 @@
+Imagine a classroom of 100 students in which you gave your pen to one person. You have to find that pen without knowing to whom you gave it. 
+
+Here are some ways to find the pen and what the O order is.
+
+O(n2): You go and ask the first person in the class if he has the pen. Also, you ask this person about the other 99 people in the classroom if they have that pen and so on, 
+This is what we call O(n2). 
+O(n): Going and asking each student individually is O(N). 
+O(log n): Now I divide the class into two groups, then ask: “Is it on the left side, or the right side of the classroom?” Then I take that group and divide it into two and ask again, and so on. Repeat the process till you are left with one student who has your pen. This is what you mean by O(log n).
+
+The O(n2) searches if only one student knows on which student the pen is hidden. 
+The O(n) if one student had the pen and only they knew it. 
+The O(log n) search if all the students knew, but would only tell me if I guessed the right side. 
+
+
+The Time Complexity of an algorithm/code is not equal to the actual time required to execute a particular code, but the number of times a statement executes. We can prove this by using the time command. 
+
+Instead of measuring actual time required in executing each statement in the code, Time Complexity considers how many times each statement executes. 
+---------------------------------------------------
+ for (i = 1; i <= n; i=i*2) {
+        cout << "Hello World !!!\n";
+    }
+    return 0;
+
+Time Complexity: O(log2(n))
+Auxiliary Space: O(1)
+-------------------------------------------------
+int i, n = 8;
+    for (i = 2; i <= n; i=pow(i,2)) {
+        cout << "Hello World !!!\n";
+    }
+    return 0;
+Time Complexity: O(log(log n))
+Auxiliary Space: O(1)
+
+---------------------------------------------------
+int list_Sum(int A[], int n)
+{
+    int sum = 0;    // cost=1  no of times=1
+    for(int i=0; i<n; i++)    // cost=2  no of times=n+1 (+1 for the end false condition)
+        sum = sum + A[i]  ;     // cost=2  no of times=n 
+    return sum ;                // cost=1  no of times=1
+}
+Tsum=1 + 2 * (n+1) + 2 * n + 1 = 4n + 4 =C1 * n + C2 = O(n)
+---------------------------------------------------
+
+
+For this one, the complexity is a polynomial equation (quadratic equation for a square matrix)
+
+Matrix of size n*n => Tsum = a.n2 + b.n + c
+Since Tsum is in order of n2, therefore Time Complexity = O(n2)
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n = 3;
+    int m = 3;
+    int arr[][3]
+        = { { 3, 2, 7 }, { 2, 6, 8 }, { 5, 1, 9 } };
+    int sum = 0;
+
+    // Iterating over all 1-D arrays in 2-D array
+    for (int i = 0; i < n; i++) {
+
+        // Printing all elements in ith 1-D array
+        for (int j = 0; j < m; j++) {
+
+            // Printing jth element of ith row
+            sum += arr[i][j];
+        }
+    }
+    cout << sum << endl;
+    return 0;
+}
+------------------------------------------------------------------
+To compare algorithms, let us define a few objective measures:
+
+Execution times: Not a good measure as execution times are specific to a particular computer.
+The number of statements executed: Not a good measure, since the number of statements varies with the programming language as well as the style of the individual programmer.
+Ideal solution:  Let us assume that we express the running time of a given algorithm as a function of the input size n (i.e., f(n)) and compare these different functions corresponding to running times. This kind of comparison is independent of machine time, programming style, etc. 
+Therefore, an ideal solution can be used to compare algorithms.
+
+--------------------------------------------------------------
+TRICKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+Let’s calculate the time complexity of the below algorithm:
+
+count = 0 
+for (int i = N; i > 0; i /= 2) 
+  for (int j = 0; j < i; j++) 
+    count++;
+This is a tricky case. In the first look, it seems like the complexity is O(N * log N). N for the j′s loop and log(N) for i′s loop. But it’s wrong. Let’s see why.
+
+Think about how many times count++ will run. 
+
+When i = N, it will run N times.
+When i = N / 2, it will run N / 2 times.
+When i = N / 4, it will run N / 4 times.
+And so on.
+The total number of times count++ will run is N + N/2 + N/4+…+1= 2 * N. So the time complexity will be O(N).
+-----------------------------------------------------------------------
+Problem-solving using computer requires memory to hold temporary data or final result while the program is in execution. The amount of memory required by the algorithm to solve given problem is called space complexity of the algorithm.
+
+The space complexity of an algorithm quantifies the amount of space taken by an algorithm to run as a function of the length of the input. Consider an example: Suppose a problem to find the frequency of array elements.
+
+It is the amount of memory needed for the completion of an algorithm. 
+
+To estimate the memory requirement we need to focus on two parts: 
+
+(1) A fixed part: It is independent of the input size. It includes memory for instructions (code), constants, variables, etc.
+
+(2) A variable part: It is dependent on the input size. It includes memory for recursion stack, referenced variables, etc.
+
+Time Complexity: O(n*m)
+The program iterates through all the elements in the 2D array using two nested loops. The outer loop iterates n times and the inner loop iterates m times for each iteration of the outer loop. Therefore, the time complexity of the program is O(n*m).
+
+Auxiliary Space: O(n*m)
+The program uses a fixed amount of auxiliary space to store the 2D array and a few integer variables. The space required for the 2D array is nm integers. The program also uses a single integer variable to store the sum of the elements. Therefore, the auxiliary space complexity of the program is O(nm + 1), which simplifies to O(n*m).
+--------------------------------------------------------------------------
+
+// C++ program for the above approach
+#include <bits/stdc++.h>
+using namespace std;
+ 
+// Function to count frequencies of array items
+void countFreq(int arr[], int n)
+{
+    unordered_map<int, int> freq;
+ 
+    // Traverse through array elements and
+    // count frequencies
+    for (int i = 0; i < n; i++)
+        freq[arr[i]]++;
+ 
+    // Traverse through map and print frequencies
+    for (auto x : freq)
+        cout << x.first << " " << x.second << endl;
+}
+ 
+// Driver Code
+int main()
+{
+    // Given array
+    int arr[] = { 10, 20, 20, 10, 10, 20, 5, 20 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+ 
+    // Function Call
+    countFreq(arr, n);
+    return 0;
+}
+Here two arrays of length N, and variable i are used in the algorithm so, the total space used is N * c + N * c + 1 * c = 2N * c + c, where c is a unit space taken. For many inputs, constant c is insignificant, and it can be said that the space complexity is O(N).
+---------------------------------------------------------
+
+. Average Case Analysis (Rarely used) 
+In average case analysis, we take all possible inputs and calculate the computing time for all of the inputs. Sum all the calculated values and divide the sum by the total number of inputs. We must know (or predict) the distribution of cases. For the linear search problem, let us assume that all cases are uniformly distributed (including the case of x not being present in the array). So we sum all the cases and divide the sum by (n+1). Following is the value of average-case time complexity. 
+ 
+
+Average Case Time = \sum_{i=1}^{n}\frac{\theta (i)}{(n+1)} = \frac{\theta (\frac{(n+1)*(n+2)}{2})}{(n+1)} = \theta (n)
